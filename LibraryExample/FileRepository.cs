@@ -38,7 +38,7 @@ namespace LibraryExample
             while (!reader.EndOfStream)
             {
                 var line = await reader.ReadLineAsync();
-                if (line.Split("^^^")?.First()?.Equals(id) ?? false)
+                if (line.Split("|")?.First()?.Equals(id) ?? false)
                 {
                     return line;
                 }
