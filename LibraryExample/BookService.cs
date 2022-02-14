@@ -19,7 +19,7 @@ namespace LibraryExample
 
             return books.Select(b =>
             {
-                var props = b.Split("^^^");
+                var props = b.Split("|");
                 return new Book
                 {
                     Id = props[0],
@@ -32,7 +32,7 @@ namespace LibraryExample
         public async Task<Book> GetBook(string id)
         {
             var line = await _fileRepository.GetById(id);
-            var props = line.Split("^^^");
+            var props = line.Split("|");
             return new Book
             {
                 Id = props[0],
@@ -43,7 +43,7 @@ namespace LibraryExample
 
         public async Task SaveBook(Book book)
         {
-            var bookString = $"{book.Id}^^^{book.Title}^^^{book.Author}";
+            var bookString = $"{book.Id}|{book.Title}|{book.Author}";
             await _fileRepository.Insert(bookString);
         }
     }
