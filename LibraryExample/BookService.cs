@@ -31,8 +31,8 @@ namespace LibraryExample
 
         public async Task<Book> GetBook(string id)
         {
-            var line = await _fileRepository.GetById(id);
-            var props = line.Split("^^^");
+            var book = await _fileRepository.GetById(id);
+            var props = book.Split("^^^");
             return new Book
             {
                 Id = props[0],
